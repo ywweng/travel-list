@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/8cb04e95ad.js" crossorigin="anonymous"></script>
+  <title>Travel List</title>
+</head>
+
+<body>
+  <h1 class="project-title">Travel List</h1>
+  <div class="container">
+    <div class="date-picker">
+      <h2 class="step">Choose Date to add card</h2>
+      <div id="litepicker"><span class="start-date"></span> - <span class="end-date"></span></div>
+    </div>
+    <h2 class="step">(1) Add Item to any card<br>(2) drag and drop<br>(3) double click to edit them</h2>
+    <div class="action">
+      <button type="button" class="delete-cards-btn">DELETE ALL CARDS</button>
+      <button type="button" class="reset-items-btn">RESET ALL ITEMS</button>
+    </div>
+    <section class="card-section">
+      <!-- insert card -->
+    </section>
+  </div>
+
+  <!-- modal -->
+  <div id="modal-overlay" class="modal-hide"></div>
+  <form id="modal" class="modal-hide">
+    <h3 class="modal-title">新增項目</h3>
+    <div><label for="arrival-time">抵達時間：</label>
+      <input type="time" name="arrival-time" id="arrival-time" required>
+    </div>
+    <div>
+      <label for="destination">地點：</label>
+      <input type="text" name="destination" id="destination" maxlength="10" required>
+    </div>
+    <div>
+      <label for="category">類別：</label>
+      <select id="category" required>
+        <option value="" selected>--請選擇--</option>
+        <option value="fa-utensils">飲食</option>
+        <option value="fa-mountain-sun">景點</option>
+        <option value="fa-bed">住宿</option>
+        <option value="fa-train">交通</option>
+      </select>
+    </div>
+    <div>
+      <label for="budget">預算：</label>
+      <input type="number" name="budget" id="budget" min="0" step="50" required>
+    </div>
+    <div class="modal-action">
+      <button type="button" class="hide" id="edit-item-btn">Save</button>
+      <button type="button" id="add-item-btn">Add</button>
+      <button type="button" id="close-modal-btn">Close</button>
+    </div>
+  </form>
+
+  <!-- footer -->
+  <footer>https://ywweng.github.io/travel-list</footer>
+
+  <script src=" https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

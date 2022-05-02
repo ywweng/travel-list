@@ -1,0 +1,289 @@
+/* reset */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #e1f4ff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+menu {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Fira Code', monospace, 'Noto Sans TC', sans-serif;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: initial;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+/* reset end */
+
+.project-title {
+  padding: 1rem;
+  text-align: center;
+  background: #fefefe;
+  opacity: 0.8;
+}
+
+.container {
+  min-width: 376px;
+  margin: 1rem;
+  flex: 1;
+}
+
+.step {
+  text-align: center;
+}
+
+.delete-cards-btn,
+.reset-items-btn {
+  text-align: center;
+}
+
+.date-picker {
+  margin: 1rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#litepicker {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  position: relative;
+  width: 80%;
+  background: #fefefe;
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#litepicker::after {
+  content: '\f073';
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+}
+
+.action {
+  margin: 1rem;
+  text-align: center;
+}
+
+.action > button {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: #fefefe;
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.action > button:hover {
+  color: red;
+}
+
+/* card */
+.card-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  margin: 2rem 1rem;
+}
+
+.card {
+  min-height: 150px;
+  border-radius: 1rem;
+  background: #fefefe;
+}
+
+.card-header {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-action > button {
+  margin: 0.5rem;
+}
+
+.card-action > button:hover {
+  opacity: 0.5;
+}
+
+.card-body {
+  padding: 1rem 0;
+  height: 100%;
+}
+
+.dragging {
+  border: 2px dashed #ccc;
+}
+
+.card-item {
+  margin: 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  background: #52c3ff;
+  color: #fefefe;
+}
+
+.card-item:hover {
+  opacity: 0.8;
+  cursor: move;
+}
+
+.item-hide {
+  opacity: 0.2;
+}
+
+.arrival-time {
+  width: 5rem;
+  text-align: center;
+}
+
+.category {
+  padding: 0.5rem;
+  width: 3rem;
+  text-align: center;
+  background: #eff9ff;
+  color: black;
+}
+
+.detail {
+  flex: 1;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-item-btn {
+  margin: 0 1rem;
+}
+
+.delete-item-btn:hover {
+  opacity: 0.5;
+}
+/* card end */
+
+/* modal */
+#modal {
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+#modal > div {
+  margin-bottom: 1rem;
+}
+
+#modal-overlay {
+  z-index: 888;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: gray;
+  opacity: 0.8;
+}
+
+.modal-title {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.modal-hide {
+  display: none;
+}
+
+.modal-action {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-action > .hide {
+  display: none;
+}
+
+.modal-action > button {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+/* modal end */
+
+footer {
+  padding: 0.5rem;
+  text-align: center;
+  background: #fefefe;
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) {
+  .card-section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card-section {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(250px, auto);
+  }
+}
