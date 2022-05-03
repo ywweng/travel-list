@@ -316,11 +316,9 @@ const controller = {
     location.reload()
   },
   renderCards(data) {
-    view.picker()
+    // 每次產生卡片重新掛監聽器
     view.getCardElement(data)
-    this.handleActionListener()
     this.handleCardListener()
-    this.handleModalListener()
   },
   handleActionListener() {
     const cardSection = document.querySelector('.card-section')
@@ -328,8 +326,11 @@ const controller = {
     const resetItemsBtn = document.querySelector('.reset-items-btn')
     deleteCardsBtn.addEventListener('click', (e) => {
       e.preventDefault()
-      const isDeleted = confirm('此動作無法復原，確認刪除？')
-      if (isDeleted) {
+      e.stopPropagation()
+      if (cardSection.innerHTML === '') {
+        alert('目前無卡片，無法執行動作')
+        return
+      } else if (confirm('此動作無法復原，確認刪除所有卡片？')) {
         controller.removeLocalData()
         cardSection.innerHTML = ''
       } else {
@@ -338,8 +339,11 @@ const controller = {
     })
     resetItemsBtn.addEventListener('click', (e) => {
       e.preventDefault()
-      const isReset = confirm('此動作無法復原，確認重置？')
-      if (isReset) {
+      e.stopPropagation()
+      if (cardSection.innerHTML === '') {
+        alert('目前無卡片，無法執行動作')
+        return
+      } else if (confirm('此動作無法復原，確認重置所有行程？')) {
         controller.resetItemData(model)
         view.getCardElement(model)
       } else {
@@ -422,5 +426,8 @@ datePicker.addEventListener('DOMSubtreeModified', (e) => {
   controller.setLocalData(model)
 })
 
+view.picker()
 controller.getLocalData()
+controller.handleActionListener()
+controller.handleModalListener()
 controller.renderCards(model)
