@@ -17,32 +17,39 @@
   <h1 class="project-title">Travel List</h1>
   <div class="container">
     <div class="date-picker">
-      <h2 class="step">Choose Date to add card</h2>
+      <!-- <h2 class="step">Choose Date to add card</h2> -->
       <div id="litepicker"><span class="start-date"></span> - <span class="end-date"></span></div>
     </div>
-    <h2 class="step">(1) Add Item to any card<br>(2) drag and drop<br>(3) double click to edit them</h2>
+    <!-- <h2 class="step">(1) Add Item to any card<br>(2) drag and drop<br>(3) double click to edit them</h2> -->
     <div class="action">
       <button type="button" class="delete-cards-btn">DELETE ALL CARDS</button>
       <button type="button" class="reset-items-btn">RESET ALL ITEMS</button>
     </div>
-    <section class="card-section">
-      <!-- insert card -->
-    </section>
+    <div class="card-container">
+      <section class="card-section">
+        <!-- insert card -->
+      </section>
+    </div>
   </div>
 
   <!-- modal -->
   <div id="modal-overlay" class="modal-hide"></div>
   <form id="modal" class="modal-hide">
     <h3 class="modal-title">新增項目</h3>
-    <div><label for="arrival-time">抵達時間：</label>
+    <div class="modal-item">
+      <label for="arrival-time">抵達時間</label>
       <input type="time" name="arrival-time" id="arrival-time" required>
     </div>
-    <div>
-      <label for="destination">地點：</label>
+    <div class="modal-item">
+      <label for="destination">地點</label>
       <input type="text" name="destination" id="destination" maxlength="10" required>
     </div>
-    <div>
-      <label for="category">類別：</label>
+    <div class="modal-item">
+      <label for="color-picker">Color</label>
+      <input type="color" name="color-picker" id="color-picker" required>
+    </div>
+    <div class="modal-item">
+      <label for="category">類別</label>
       <select id="category" required>
         <option value="" selected>--請選擇--</option>
         <option value="fa-utensils">飲食</option>
@@ -51,14 +58,14 @@
         <option value="fa-train">交通</option>
       </select>
     </div>
-    <div>
-      <label for="budget">預算：</label>
+    <div class="modal-item">
+      <label for="budget">預算</label>
       <input type="number" name="budget" id="budget" min="0" step="50" required>
     </div>
     <div class="modal-action">
+      <button type="button" id="close-modal-btn">Cancel</button>
       <button type="button" class="hide" id="edit-item-btn">Save</button>
       <button type="button" id="add-item-btn">Add</button>
-      <button type="button" id="close-modal-btn">Close</button>
     </div>
   </form>
 

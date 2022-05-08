@@ -1,39 +1,4 @@
-let model = [
-  // {
-  //   date: '2022/1/1',
-  //   items: [
-  //     {
-  //       time: '21:50',
-  //       category: 'fa-utensils',
-  //       destination: '壽司郎',
-  //       budget: 300
-  //     },
-  //     {
-  //       time: '22:50',
-  //       category: 'fa-mountain-sun',
-  //       destination: '鍋燒麵',
-  //       budget: 200
-  //     }
-  //   ]
-  // },
-  // {
-  //   date: '2022/1/2',
-  //   items: [
-  //     {
-  //       time: '10:50',
-  //       category: 'fa-bed',
-  //       destination: '湯姆熊',
-  //       budget: 500
-  //     },
-  //     {
-  //       time: '3:50',
-  //       category: 'fa-train',
-  //       destination: '蘭蔻',
-  //       budget: 2000
-  //     }
-  //   ]
-  // }
-]
+let model = []
 
 let targetCard = {}
 
@@ -78,7 +43,7 @@ const view = {
       let itemTemp = ''
       if (data.items.length > 0) {
         data.items.forEach((item) => {
-          itemTemp += `<li class="card-item" draggable="true" id="${item.id}">
+          itemTemp += `<li class="card-item" style="background:${item.color};" draggable="true" id="${item.id}" title="點兩下編輯">
                 <div class="arrival-time">${item.arrivalTime}</div>
                 <div class="category"><i class="fa-solid ${item.category}"></i></div>
                 <div class="detail">
@@ -115,6 +80,7 @@ const view = {
     const item = {
       arrivalTime: modal.querySelector('#arrival-time'),
       destination: modal.querySelector('#destination'),
+      color: modal.querySelector('#color-picker'),
       category: modal.querySelector('#category'),
       budget: modal.querySelector('#budget')
     }
@@ -125,6 +91,7 @@ const view = {
     editItemBtn.classList.add('hide')
     item.arrivalTime.setAttribute('value', '')
     item.destination.setAttribute('value', '')
+    item.color.setAttribute('value', '')
     item.category.setAttribute('value', '')
     item.budget.setAttribute('value', '')
   },
@@ -179,6 +146,7 @@ const view = {
     const item = {
       arrivalTime: modal.querySelector('#arrival-time'),
       destination: modal.querySelector('#destination'),
+      color: modal.querySelector('#color-picker'),
       category: modal.querySelector('#category'),
       budget: modal.querySelector('#budget')
     }
@@ -195,6 +163,7 @@ const view = {
     })
     item.arrivalTime.setAttribute('value', editItem.arrivalTime)
     item.destination.setAttribute('value', editItem.destination)
+    item.color.setAttribute('value', editItem.color)
     item.category.setAttribute('value', editItem.category)
     item.budget.setAttribute('value', editItem.budget)
     view.editItemId = editItem.id
@@ -236,6 +205,7 @@ const controller = {
           : Math.floor(Math.random() * 10000).toString(16),
       arrivalTime: modal.querySelector('#arrival-time').value,
       destination: modal.querySelector('#destination').value,
+      color: modal.querySelector('#color-picker').value,
       category: modal.querySelector('#category').value,
       budget: modal.querySelector('#budget').value
     }
@@ -260,6 +230,7 @@ const controller = {
       data.items.forEach((item) => {
         if (item.id === editItem.id) {
           item.arrivalTime = editItem.arrivalTime
+          item.color = editItem.color
           item.category = editItem.category
           item.destination = editItem.destination
           item.budget = editItem.budget
