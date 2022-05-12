@@ -128,13 +128,12 @@ button {
 /* card */
 
 .card-section {
-  flex: 1;
   overflow-y: scroll;
   scroll-behavior: smooth;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
-  margin: 1rem 1.5rem;
+  margin: 1rem 1.5rem 4rem 1rem;
 }
 
 .card-section::-webkit-scrollbar {
